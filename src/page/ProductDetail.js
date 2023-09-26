@@ -10,7 +10,7 @@ const ProductDetail = () => {
   const [loading, setLoading] = useState(false);
   const { id } = useParams();
   const getProductDetail = async () => {
-    const url = `http://localhost:5000/products/${id}`;
+    const url = `https://my-json-server.typicode.com/lego-jm/hnm-project/products/${id}`;
 
     try {
       const response = await fetch(url);

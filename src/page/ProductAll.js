@@ -8,7 +8,7 @@ const ProductAll = () => {
 
   const getProductList = async () => {
     const query = search.get("q") ? search.get("q") : "";
-    const url = `http://localhost:5000/products/?q=${query}`;
+    const url = `https://my-json-server.typicode.com/lego-jm/hnm-project/products/?q=${query}`;
 
     try {
       const response = await fetch(url);
