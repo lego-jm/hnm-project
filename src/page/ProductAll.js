@@ -7,7 +7,7 @@ const ProductAll = () => {
   const [search, setSearch] = useSearchParams();
 
   const getProductList = async () => {
-    const query = search.get("q") ? search.get("q") : "";
+    const query = search.get("q") || "";
     const url = `https://my-json-server.typicode.com/lego-jm/hnm-project/products/?q=${query}`;
 
     try {
