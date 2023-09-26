@@ -11,14 +11,17 @@ function App() {
 
   return (
     <div>
-      <Header />
+      <Header loginCheck={loginCheck} setLoginCheck={setLoginCheck} />
       <Routes>
         <Route path="/" element={<ProductAll />} />
         <Route
           path="/products/:id"
           element={<PrivateRouter loginCheck={loginCheck} />}
         />
-        <Route path="/login" element={<Login />} />
+        <Route
+          path="/login"
+          element={<Login setLoginCheck={setLoginCheck} />}
+        />
       </Routes>
     </div>
   );

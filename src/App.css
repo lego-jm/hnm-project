@@ -1,3 +1,7 @@
+.header-wrap {
+  margin-bottom: 50px;
+}
+
 .header-login {
   display: flex;
   justify-content: flex-end;
@@ -12,6 +16,7 @@
 .header-logo {
   display: flex;
   justify-content: center;
+  margin-bottom: 30px;
 }
 
 .header-logo img {
@@ -80,4 +85,58 @@
 
 .product-card {
   cursor: pointer;
+}
+
+.login-wrap {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5px;
+  gap: 5px;
+}
+
+.login-form input {
+  padding: 10px;
+  border: 1px solid #ced4da;
+  border-radius: 10px;
+}
+
+.login-button {
+  border: none;
+  background-color: transparent;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+.danger {
+  background-color: #dc3545;
+  border-color: #dc3545;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 5px;
+}
+
+.product-detail-wrap {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.select-wrap {
+  width: 25%;
+  margin-bottom: 10px;
+}
+
+.detail-button {
+  width: 100%;
+}
+
+.detail-contents {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }

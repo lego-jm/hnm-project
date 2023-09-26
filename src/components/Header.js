@@ -13,9 +13,10 @@ const menuList = [
   "지속가능성",
 ];
 
-const Header = () => {
+const Header = ({ loginCheck, setLoginCheck }) => {
   const navigate = useNavigate();
   const goToLogin = () => {
+    if (loginCheck) setLoginCheck(false);
     navigate("/login");
   };
 
@@ -24,10 +25,10 @@ const Header = () => {
   };
 
   return (
-    <div>
+    <div className="header-wrap">
       <div className="header-login">
         <AiOutlineUser />
-        <span onClick={goToLogin}>로그인</span>
+        <span onClick={goToLogin}>{loginCheck ? "로그아웃" : "로그인"}</span>
       </div>
       <div className="header-logo">
         <img
