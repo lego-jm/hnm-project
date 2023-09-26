@@ -13,7 +13,7 @@ const ProductCard = ({ products }) => {
         <img src={products?.img} alt="" />
       </div>
       <div className="choice">{products?.choice ? "Conscious choice" : ""}</div>
-      <div>{products?.title}</div>
+      <div className="title">{products?.title}</div>
       <div>₩{products?.price.toLocaleString()}</div>
       <div className="new-product">{products?.new ? "신제품" : ""}</div>
     </div>

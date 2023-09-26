@@ -24,6 +24,11 @@ const Header = ({ loginCheck, setLoginCheck }) => {
     navigate("/");
   };
 
+  const handleSearch = (e) => {
+    const keyword = e.target.value;
+    navigate(`/?q=${keyword}`);
+  };
+
   return (
     <div className="header-wrap">
       <div className="header-login">
@@ -48,7 +53,13 @@ const Header = ({ loginCheck, setLoginCheck }) => {
           <label for="search">
             <AiOutlineSearch size={25} />
           </label>
-          <input id="search" type="text" name="" placeholder="제품검색" />
+          <input
+            id="search"
+            type="text"
+            name=""
+            placeholder="제품검색"
+            onKeyPress={handleSearch}
+          />
         </div>
       </div>
     </div>

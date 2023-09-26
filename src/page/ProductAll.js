@@ -1,25 +1,33 @@
 import React, { useEffect, useState } from "react";
 import ProductCard from "../components/ProductCard";
-import { Container } from "react-bootstrap";
+import { useSearchParams } from "react-router-dom";
 
 const ProductAll = () => {
   const [productList, setProductList] = useState([]);
+  const [search, setSearch] = useSearchParams();
 
   const getProductList = async () => {
-    const url = `http://localhost:5000/products`;
-    const response = await fetch(url);
-    const data = await response.json();
-    setProductList(data);
+    const query = search.get("q") ? search.get("q") : "";
+    const url = `http://localhost:5000/products/?q=${query}`;
+
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+
+      setProductList(data);
+    } catch (e) {
+      throw Error(`에러가 발생했습니다.${e.message}`);
+    }
   };
 
   useEffect(() => {
     getProductList();
-  }, []);
+  }, [search]);
 
   return (
     <div className="product-wrap">
-      {productList.map((products, index) => (
-        <ProductCard key={index} products={products} />
+      {productList.map((products) => (
+        <ProductCard key={products.id} products={products} />
       ))}
     </div>
   );
