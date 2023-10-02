@@ -1,12 +1,14 @@
+import { loginActions } from "../reducer/loginReducers";
+
 function login(id, password) {
   return (dispatch, getState) => {
-    dispatch({ type: "LOGIN_SUCCESS", payload: { id, password } });
+    dispatch(loginActions.login({ id, password }));
   };
 }
 
 function logout() {
   return (dispatch, getState) => {
-    dispatch({ type: "LOGOUT_SUCCESS", payload: {} });
+    dispatch(loginActions.logout());
   };
 }
 
