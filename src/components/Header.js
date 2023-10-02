@@ -1,6 +1,8 @@
 import React from "react";
 import { AiOutlineUser, AiOutlineSearch } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { logoutCheck } from "../redux/actions/loginAction";
 
 const menuList = [
   "여성",
@@ -13,10 +15,12 @@ const menuList = [
   "지속가능성",
 ];
 
-const Header = ({ loginCheck, setLoginCheck }) => {
+const Header = () => {
+  const loginCheck = useSelector((state) => state.login.loginCheck);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const goToLogin = () => {
-    if (loginCheck) setLoginCheck(false);
+    if (loginCheck) dispatch(logoutCheck.logout());
     navigate("/login");
   };
 

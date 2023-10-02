@@ -1,23 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import ProductCard from "../components/ProductCard";
 import { useSearchParams } from "react-router-dom";
+import { productAction } from "../redux/actions/productAction";
+import { useDispatch, useSelector } from "react-redux";
 
 const ProductAll = () => {
-  const [productList, setProductList] = useState([]);
+  const productList = useSelector((state) => state.product.productList);
   const [search, setSearch] = useSearchParams();
+  const dispatch = useDispatch();
 
-  const getProductList = async () => {
+  const getProductList = () => {
     const query = search.get("q") || "";
-    const url = `https://my-json-server.typicode.com/lego-jm/hnm-project/products/?q=${query}`;
-
-    try {
-      const response = await fetch(url);
-      const data = await response.json();
-
-      setProductList(data);
-    } catch (e) {
-      throw Error(`에러가 발생했습니다.${e.message}`);
-    }
+    dispatch(productAction.getProducts(query));
   };
 
   useEffect(() => {

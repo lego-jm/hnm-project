@@ -4,24 +4,18 @@ import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useParams } from "react-router-dom";
 import ClipLoader from "react-spinners/ClipLoader";
+import { useDispatch, useSelector } from "react-redux";
+import { productDetail } from "../redux/actions/productAction";
 
 const ProductDetail = () => {
-  const [product, setProduct] = useState();
+  const product = useSelector((state) => state.product.product);
   const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
   const { id } = useParams();
-  const getProductDetail = async () => {
-    const url = `https://my-json-server.typicode.com/lego-jm/hnm-project/products/${id}`;
 
-    try {
-      const response = await fetch(url);
-      const data = await response.json();
-
-      setProduct(data);
-      setLoading(false);
-    } catch (e) {
-      setLoading(false);
-      throw Error(`에러가 발생했습니다.${e.message}`);
-    }
+  const getProductDetail = () => {
+    dispatch(productDetail.getProductDetail(id));
+    setLoading(false);
   };
 
   useEffect(() => {
